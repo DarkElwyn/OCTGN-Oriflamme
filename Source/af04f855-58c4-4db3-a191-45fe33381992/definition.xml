@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<game name="Oriflamme"
+    id="af04f855-58c4-4db3-a191-45fe33381992"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="1.1.0.4" 
+    tags="Oriflamme 20min 3-5 joueurs"
+    description="[3-5 joueurs][20min]
+	&#xd;Le roi est mort sans laisser de descendance. Partout dans le royaume, les familles les plus influentes cherchent à prendre le pouvoir par le complot, la ruse... et le sang. Vous êtes à la tête de l’une de ces familles."
+    setsurl="https://darkelwyn.github.io/octgn/Oriflamme/ico.png" 
+	gameurl="https://darkelwyn.github.io/octgn/Oriflamme/"
+    authors="RomElwyn"
+    iconurl="https://darkelwyn.github.io/octgn/Oriflamme/ico.png"
+    octgnVersion="3.1.240.0"
+    scriptVersion="3.1.0.2"
+    markersize="30"
+	usetwosidedtable="False"
+    >
+    <scripts>
+	  <script src="Scripts/actions.py" />
+    </scripts>
+    <events>
+		<event name="OnGameStarted" action="setup"/>
+		<event name="OnCounterChanged" action="OnCounterChanged"/>
+		<event name="OnCardsMoved" action="OnCardsMoved"/>
+		<event name="OnTurnPassed" action="OnTurnPassed"/>
+		<event name="OnPhasePassed" action="OnPhasePassed"/>
+		<event name="OnCardDoubleClicked" action="OnCardDoubleClicked"/>
+	</events>
+    <sounds>
+    </sounds>
+    <fonts>
+    </fonts>
+    <proxygen definitionsrc="Proxies/proxydef.xml">
+    </proxygen>
+	<phases>
+		  <phase name=" " icon="icon/no_thank_you.jpg" />
+	</phases>
+    <documents>
+		<document name="Aide de jeu" icon="" src="documents/aide.pdf" />
+    </documents> 
+    <gameModes>
+    </gameModes>
+    <globalvariables>
+		<globalvariable name="dateTimeDebut" value="0" />
+		<globalvariable name="rankFirstPlayer" value="0" />
+		<globalvariable name="rankCurrentHighlight" value="0" />
+    </globalvariables>
+    <card back="cards/dos_bleu.jpg" front="cards/dos_bleu.jpg" width="100" height="170" cornerRadius="8">
+		<property name="Type" type="String" />
+		<property name="Proprio" type="String" />
+		
+		<size name="Jaune" width="100" height="170" back="cards/dos_jaune.jpg" front="cards/dos_jaune.jpg" cornerRadius="8"/>
+		<size name="Noir" width="100" height="170" back="cards/dos_noir.jpg" front="cards/dos_noir.jpg" cornerRadius="8"/>
+		<size name="Rouge" width="100" height="170" back="cards/dos_rouge.jpg" front="cards/dos_rouge.jpg" cornerRadius="8"/>
+		<size name="Vert" width="100" height="170" back="cards/dos_vert.jpg" front="cards/dos_vert.jpg" cornerRadius="8"/>
+		<size name="Token" width="81" height="94" back="cards/dos_vert.jpg" front="cards/dos_vert.jpg" cornerRadius="8"/>
+	</card>
+	<gameboards name="Default" src="Resources/arrow_b50.png" x="-300" y="-200" width="600" height="76">
+	</gameboards>
+    <table name="Table" visibility="undefined" ordered="False" width="1000" height="650" background="Resources/versailles.jpg" backgroundStyle="uniformToFill">
+		<groupaction menu="Arranger la File" execute="arrange" />
+		<groupaction menu="Surligner la carte suivante..." shortcut="tab" execute="setHighlightToNext" />
+		<groupseparator />
+		<groupaction menu="Durée" execute="printGameDuration" />
+		
+        <cardaction menu="Ajouter 1 Influence" shortcut="F4" execute="incCardInfluence" showIf="canInc" />
+        <cardaction menu="Oups" execute="flipBack" showIf="canBeStupid" />
+    </table>
+	<player summary="({#Influence})">
+		<counter name="Influence" icon="Resources/influence.png" default="1" />
+		<hand name="Main" shortcut="ctrl+H" visibility="me" ordered="False" icon="Resources/hand.png">
+			<cardaction menu="Jouer --&gt;" execute="playCardR" />
+			<cardaction menu="Jouer &#x3c;--" execute="playCardL" />
+		</hand>
+		<group name="Défausse" shortcut="del" visibility="all"  icon="Resources/discard.png" collapsed="False" />
+		<group name="Famille" visibility="none"  icon="Resources/deck.png" collapsed="False" />
+	</player>
+	<shared>
+	</shared>
+</game>
