@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <set name="Base Set" id="00000001-0000-0092-0001-000000000000" gameId="af04f855-58c4-4db3-a191-45fe33381992" gameVersion="1.0.0.0" version="1.0">
-	<markers>
-		<marker id="00000001-0000-0092-0001-100000000000" name="Influence en attente" />
-		<marker id="00000001-0000-0092-0001-100000000001" name="Influence actuelle" />
-	</markers>
     <cards>
 		<card id="00000001-0000-0092-0001-000000000001" name="Archer" />
 		<card id="00000001-0000-0092-0001-000000000002" name="Assassinat" />

@@ -2,7 +2,7 @@
 <game name="Oriflamme"
     id="af04f855-58c4-4db3-a191-45fe33381992"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    version="1.1.0.4" 
+    version="1.1.1.5" 
     tags="Oriflamme 20min 3-5 joueurs"
     description="[3-5 joueurs][20min]
 	&#xd;Le roi est mort sans laisser de descendance. Partout dans le royaume, les familles les plus influentes cherchent à prendre le pouvoir par le complot, la ruse... et le sang. Vous êtes à la tête de l’une de ces familles."
@@ -10,7 +10,7 @@
 	gameurl="https://darkelwyn.github.io/octgn/Oriflamme/"
     authors="RomElwyn"
     iconurl="https://darkelwyn.github.io/octgn/Oriflamme/ico.png"
-    octgnVersion="3.1.240.0"
+    octgnVersion="3.4.240.0"
     scriptVersion="3.1.0.2"
     markersize="30"
 	usetwosidedtable="False"
@@ -30,6 +30,10 @@
     </sounds>
     <fonts>
     </fonts>
+	<markers>
+		<marker id="00000001-0000-0092-0001-100000000000" name="Influence en attente" src="Markers/00000001-0000-0092-0001-100000000000.png" />
+		<marker id="00000001-0000-0092-0001-100000000001" name="Influence actuelle"   src="Markers/00000001-0000-0092-0001-100000000001.png" />
+	</markers>
     <proxygen definitionsrc="Proxies/proxydef.xml">
     </proxygen>
 	<phases>
@@ -68,10 +72,10 @@
     </table>
 	<player summary="({#Influence})">
 		<counter name="Influence" icon="Resources/influence.png" default="1" />
-		<hand name="Main" shortcut="ctrl+H" visibility="me" ordered="False" icon="Resources/hand.png">
+		<group name="hand" shortcut="ctrl+H" visibility="me" ordered="False" icon="Resources/hand.png" viewState="expanded">
 			<cardaction menu="Jouer --&gt;" execute="playCardR" />
 			<cardaction menu="Jouer &#x3c;--" execute="playCardL" />
-		</hand>
+		</group>
 		<group name="Défausse" shortcut="del" visibility="all"  icon="Resources/discard.png" collapsed="False" />
 		<group name="Famille" visibility="none"  icon="Resources/deck.png" collapsed="False" />
 	</player>
